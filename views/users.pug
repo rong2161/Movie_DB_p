@@ -1,0 +1,19 @@
+html
+	head
+		title User Database Search Results
+body
+	include ./header
+	br
+
+	each user in users
+		a(href="/users/" + user._id) #{user.username}
+		br
+
+	if current > 1
+		- let url = "/users?page=" + (current-1)
+		- if(qstring.length > 0){ url += "&" + qstring; }
+		a(href=url) Previous
+		|
+	- url = "/users?page=" + (current+1)
+	- if(qstring.length > 0){ url += "&" + qstring; }
+	a(href=url) Next

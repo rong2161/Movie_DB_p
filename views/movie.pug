@@ -1,0 +1,40 @@
+
+
+html
+	include ./header.pug
+	head
+		movie !{movie.Title}
+
+
+
+	body
+		- var ave = movie.getAveRating()
+		p Title:
+			strong #{movie.Title}
+		p Year:
+			strong #{movie.Year}
+		p Ave.Rating:
+			strong #{movie.getAveRating()} /100
+		p Movie Length:
+			strong #{movie.Runtime}
+		p Genre:
+			each g in movie.Genre
+				a(href="/movies?genre=" + g) #{g} |
+
+		p Director:
+			each person in movie.Director
+				
+				a(href="/people/name/" + person) #{person} |
+
+		p Actors:
+			each person in movie.Actors
+				a(href="/people/name/" + person) #{person} |
+
+		p Writer:
+			each person in movie.Writer
+				a(href="/people/name/" + person) #{person} |
+
+		p
+			strong Plot:
+			br
+			|  #{movie.Plot}

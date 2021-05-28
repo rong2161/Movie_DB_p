@@ -1,0 +1,26 @@
+div#header
+
+	if session && session.loggedin
+		| &nbsp
+		a(href="/account/" + session.uID) &nbsp 【#{session.user}】 &nbsp
+		||
+		a(href='/users') &nbsp Users &nbsp
+		||
+		a(href='/movies') &nbsp Movies &nbsp
+		||
+		a(href='/people') &nbsp People &nbsp
+		||
+		a(href="/logOut") &nbsp LogOut &nbsp
+
+	else
+		| &nbsp
+		a(href='/signUp') &nbsp Sign Up &nbsp
+		||
+		a(href='/logIn') &nbsp Log In &nbsp
+		||
+		a(href='/movies') &nbsp Movies &nbsp
+		||
+		a(href='/users') &nbsp Users &nbsp
+		||
+		a(href='/people') &nbsp People &nbsp
+		||

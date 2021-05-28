@@ -1,0 +1,19 @@
+html
+
+	head
+		title Log In
+
+	Body
+		include ./header.pug
+		h1 Log-In to the Movie Database
+		div
+			form(method="POST" action="/logInUser")
+				label(for="username") Username
+				br
+				input(name="username" required)
+				br
+				label(for="password") Password
+				br
+				input(name="password" required)
+				br
+				button(type="submit") Log In

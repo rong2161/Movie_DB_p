@@ -1,0 +1,19 @@
+html
+	head
+		title People Database Search Results
+body
+	include ./header
+	br
+
+	each person in people
+		a(href="/people/" + person._id) #{person.name}
+		br
+
+	if current > 1
+		- let url = "/people?page=" + (current-1)
+		- if(qstring.length > 0){ url += "&" + qstring; }
+		a(href=url) Previous
+		|
+	- url = "/people?page=" + (current+1)
+	- if(qstring.length > 0){ url += "&" + qstring; }
+	a(href=url) Next

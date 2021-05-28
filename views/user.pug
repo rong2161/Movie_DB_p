@@ -1,0 +1,35 @@
+html
+	include ./header.pug
+	head
+		h2 #{user.username}'s profile:
+			if session.loggedin
+				form(method="POST" action = "/account/follow/" + user._id)
+					button(type="submit") Follow
+				form(method="POST" action = "/account/unfollow/" + user._id)
+					button(type="submit") UnFollow
+
+
+	body
+
+		h4 #{user.username}
+		p ID: #{user._id}
+		
+		
+		
+		- var ulist = user.userList()
+		- var plist = user.peopleList()
+		
+		| users followed:
+		br
+		each uid in ulist
+			br
+			a(href="/users/" + uid) friend
+			br
+			
+			
+		| people followed:
+		br
+		each pid in plist
+			br
+			a(href="/people/" + pid) person
+			br

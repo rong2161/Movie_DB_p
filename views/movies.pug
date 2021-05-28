@@ -1,0 +1,19 @@
+html
+	head
+		title Movie Database Search Results
+body
+	include ./header
+	br
+
+	each movie in movies
+		a(href="/movies/" + movie._id) #{movie.Title}
+		br
+
+	if current > 1
+		- let url = "/movies?page=" + (current-1)
+		- if(qstring.length > 0){ url += "&" + qstring; }
+		a(href=url) Previous
+		|
+	- url = "/movies?page=" + (current+1)
+	- if(qstring.length > 0){ url += "&" + qstring; }
+	a(href=url) Next

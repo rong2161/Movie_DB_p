@@ -1,0 +1,19 @@
+html
+	
+	head
+		title Sign up
+		
+	Body
+		include ./header.pug
+		h1 Sign Up For the Movie Database
+	
+	form(method="POST" action="/signUpUser")
+		label(for="username") Enter Username
+		br
+		input(name="username" required)
+		br
+		label(for="password") Enter Password
+		br
+		input(name="password" required)
+		br
+		button(type="submit") Create Account

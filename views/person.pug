@@ -1,0 +1,22 @@
+html
+	include ./header.pug
+	head
+		h2 #{person.name}'s Profile:
+			if session.loggedin
+				form(method="POST" action = "/account/followP/" + person._id)
+					button(type="submit") Follow
+				form(method="POST" action = "/account/unfollowP/" + person._id)
+					button(type="submit") UnFollow
+	body
+
+		p name:&nbsp
+			strong #{person.name}
+
+		p role:&nbsp
+			strong #{person.role}
+
+		if person.work && person.work.length > 0
+		|work:&nbsp
+		each work in person.work
+			li
+				a(href="/movies/" + work._id._id) #{work.Title} |

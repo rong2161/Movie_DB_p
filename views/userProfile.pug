@@ -1,0 +1,12 @@
+html
+	if session && session.loggedin
+		head
+			title Profile
+			
+		body
+			include ./header.pug
+			if session.loggedin
+				h2 Profile of !{user.username}
+	
+	else		
+		h1 Invalid User!~

@@ -1,0 +1,43 @@
+html
+	if session && session.loggedin
+		head
+			title Account
+
+		body
+			include ./header.pug
+			if session.loggedin
+				h2 Profile of !{user.username}
+				if session.admin
+					h3 user status:
+						strong 【Contributor】
+							form(method="POST" action = "/account/statuschange")
+								button(type="submit") Change User Status
+
+				else
+					h3 user status:
+						strong 【Regular】
+							form(method="POST" action = "/account/statuschange")
+								button(type="submit") Change User Status
+				h4 this is #{user.username}'s profile page with session ID: !{session.id}
+				h4 this is #{user.username}'s profile page with user ID: !{user._id}
+
+
+
+			div
+				form(method="GET" action="/movies")
+					label(for="title") Movie Title:
+					br
+					input(name="title")
+					br
+					label(for="genre") genre:
+					br
+					input(name="genre")
+					br
+					label(for="year") year:
+					br
+					input(name="year")
+					br
+					button(type="submit") Search
+
+	else
+		h1 Invalid User!~
